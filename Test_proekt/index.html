@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xavfsizlik Tizimi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="scanlines"></div>
+    <div class="noise"></div>
+
+    <!-- Bosh sahifa -->
+    <div id="attack-screen" class="screen active">
+        <div class="attack-content container text-center">
+            <h1 class="hack-text-logo position-absolute top-0 start-0 m-4 text-danger fw-bold fs-2">HACK</h1>
+            <h1 class="growing-text">SIZ KIBERXUJUMGA UCHRADINGIZ!</h1>
+            <p id="instruction-text" style="color:#d00; font-weight:bold; font-size: 1.5rem;">UNDAN CHIQISH UCHUN PASTDAGI CHIQISH
+                TUGMASINI BOSING</p>
+            <label id="cred-label" style="display:none; color:#000; font-size:1.2rem; margin-bottom:10px;">Gmail yoki
+                Telefon raqamingizni kiriting:</label>
+            <input type="text" id="user-credential" placeholder="example@gmail.com" class="terminal-input">
+            <br>
+            <div id="credential-error" style="color: var(--danger); margin-top: 10px; display: none;">Iltimos, maydonni
+                to'ldiring!</div>
+            <button id="start-attack-btn" class="main-btn blue-exit-btn">CHIQISH</button>
+        </div>
+    </div>
+
+    <div id="kbd-warning">KLAVIATURA O'CHIRILGAN!</div>
+
+    <!-- Video ekrani -->
+    <div id="video-screen" class="screen">
+        <div class="video-container">
+            <div id="player" style="width: 100vw; height: 100vh;"></div> <!-- Make video container full screen -->
+            <button id="after-video-btn" class="main-btn" style="margin-top:20px;background:#28a745">TESTNI
+                BOSHLASH</button>
+        </div>
+    </div>
+
+    <!-- Test ekrani -->
+    <div id="hack-screen" class="screen">
+        <h1 class="hack-text-logo position-absolute top-0 start-0 m-4 text-danger fw-bold fs-3">HACK</h1>
+        <h1 id="warning-text" class="glitch">SYSTEM COMPROMISED</h1>
+        <div class="test-box">
+            <div class="terminal-header">ALERTA: Unauthorized Access Detected</div>
+            <div class="time-container">Qolgan vaqt: <span id="time-left">10</span>s</div>
+            <p id="question">Savol yuklanmoqda...</p>
+            <div id="options"></div>
+            <div class="quiz-info">
+                Xatolar: <span id="error-count">0</span>/3
+            </div>
+            <div class="progress-container">
+                <p>Data Extraction: <span id="upload-percent">0</span>%</p>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Matrix ekrani -->
+    <div id="block-screen" class="screen">
+        <div class="block-content">
+            <h1 class="glitch">SIZ BLOKLANDINGIZ!</h1>
+            <p class="danger-text">MALUMOTLARINGIZ O'G'IRLANMOQDA!</p>
+            <p>Qayta urinish: <span id="timer">05:00</span></p>
+            <div id="fake-deletion" class="deletion-list"></div>
+        </div>
+        <canvas id="matrix-canvas"></canvas>
+        <video id="webcam" autoplay playsinline style="display:none;"></video>
+    </div>
+
+    <!-- Natijа -->
+    <div id="result-screen" class="screen">
+        <div class="test-box success-box">
+            <h1 class="success-animate">SIZ QUTULIB QOLDINGIZ!</h1>
+            <p>Tizim xavfsiz. Dastur yopilmoqda...</p>
+            <button id="exit-fullscreen-btn" class="main-btn blue-exit-btn" style="margin-top: 20px;">Tizimdan
+                chiqish</button>
+        </div>
+    </div>
+
+    <audio id="warning-sound" src="./warning.mp3" preload="auto" loop></audio> <!-- Loop qo'shildi -->
+
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>

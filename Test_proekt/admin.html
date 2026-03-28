@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel - Monitoring</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="admin-style.css">
+</head>
+
+<body>
+    <div class="scanlines"></div>
+    <div class="noise"></div>
+    <div class="container">
+        <h1 class="glitch">Kiber-Monitoring</h1>
+        <button id="clear-data" class="btn-danger">Bazani Tozalash</button>
+        <button id="export-csv" class="btn-success" style="background: #004400; color: #0f0; border: 1px solid #0f0; padding: 10px 20px; cursor: pointer; margin-left: 10px;">CSV Yuklash</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>Vaqt</th>
+                    <th>IP Manzil</th>
+                    <th>Email/Telefon</th>
+                    <th>Qurilma</th>
+                    <th>Webcam</th>
+                    <th>Holat</th>
+                    <th>Ball</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                <tr>
+                    <td colspan="7">Yuklanmoqda...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Rasm ko'rish uchun Modal -->
+    <div id="imageModal" class="modal">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modal-img">
+        <div id="modal-caption"></div>
+    </div>
+
+    <script type="module" src="admin-script.js"></script>
+</body>
+
+</html>

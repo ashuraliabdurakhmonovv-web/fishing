@@ -1,0 +1,308 @@
+:root {
+    --primary: #0f0;
+    --danger: #f00;
+    --bg: #000;
+    --terminal-font: 'Share Tech Mono', monospace;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--primary);
+    font-family: var(--terminal-font);
+    overflow: hidden;
+}
+
+/* Kirish ekrani uchun oq fon */
+#attack-screen {
+    background: #ffffff;
+    color: #000000;
+}
+
+.screen {
+    display: none;
+    height: 100vh;
+    width: 100vw;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.screen.active {
+    display: flex;
+}
+
+.scanlines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 4px, 3px 100%;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.glitch {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 4rem;
+    text-transform: uppercase;
+    animation: glitch 1s linear infinite;
+}
+
+@keyframes growingText {
+    0% {
+        font-size: 0.5rem;
+        transform: scale(0.1);
+    }
+
+    100% {
+        font-size: 4rem;
+        transform: scale(1);
+    }
+}
+
+.growing-text {
+    font-family: 'Share Tech Mono', monospace;
+    font-weight: bold;
+    text-transform: uppercase;
+    animation: growingText 2s forwards;
+}
+
+@keyframes glitch {
+
+    2%,
+    64% {
+        transform: translate(2px, 0) skew(0deg);
+    }
+
+    4%,
+    60% {
+        transform: translate(-2px, 0) skew(0deg);
+    }
+
+    62% {
+        transform: translate(0, 0) skew(5deg);
+    }
+}
+
+.terminal-input {
+    background: #eee;
+    border: 2px solid #000;
+    color: #000;
+    padding: 10px;
+    width: 400px;
+    font-size: 1.5rem;
+    text-align: center;
+    outline: none;
+    display: none;
+    /* Dastlab yashirin */
+}
+
+.main-btn {
+    padding: 20px 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border: none;
+    font-family: 'Orbitron', sans-serif;
+    transition: 0.3s;
+}
+
+.hack-text-logo {
+    font-family: 'Orbitron', sans-serif;
+    animation: pulse 1.5s infinite alternate;
+    text-shadow: 0 0 15px #f00, 0 0 30px #f00;
+    letter-spacing: 5px;
+    z-index: 100;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.05);
+    }
+}
+
+.blue-exit-btn {
+    background: #007bff;
+    color: white;
+}
+
+.blue-exit-btn:hover {
+    background: #0056b3;
+    box-shadow: 0 0 20px #007bff;
+}
+
+.test-box {
+    border: 2px solid var(--primary);
+    padding: 40px;
+    background: rgba(0, 20, 0, 0.8);
+    width: 800px;
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.2);
+}
+
+#question {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    line-height: 1.4;
+}
+
+#player iframe,
+#player video {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+#matrix-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    border: 1px solid var(--primary);
+    margin-top: 10px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--primary);
+    width: 0%;
+    transition: width 0.1s;
+}
+
+#camera-frame {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 200px;
+    height: 150px;
+    border: 2px solid var(--danger);
+    background: #000;
+}
+
+.cam-label {
+    font-size: 0.8rem;
+    color: var(--danger);
+}
+
+#kbd-warning {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: var(--danger);
+    color: white;
+    text-align: center;
+    display: none;
+    z-index: 100;
+}
+
+.option-btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    font-size: 1.3rem;
+    font-family: var(--terminal-font);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.option-btn:hover {
+    background: rgba(0, 255, 0, 0.2);
+}
+
+.deletion-list {
+    font-size: 0.9rem;
+    color: #f0f;
+    margin-top: 20px;
+    height: 100px;
+    overflow: hidden;
+}
+
+/* Muvaffaqiyatli yakun uchun maxsus animatsiya */
+@keyframes success-reveal {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.5);
+        filter: blur(15px);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: translateY(-10px) scale(1.1);
+        filter: blur(5px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+@keyframes success-glow {
+    0% {
+        text-shadow: 0 0 10px #0f0, 0 0 20px #0f0;
+    }
+
+    100% {
+        text-shadow: 0 0 20px #0f0, 0 0 40px #0f0, 0 0 60px #0f0;
+    }
+}
+
+.success-animate {
+    animation: success-reveal 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards,
+        success-glow 1.5s infinite alternate;
+    color: #0f0;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 4.5rem;
+    text-transform: uppercase;
+}
+
+.video-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+#player {
+    width: 100%;
+    height: 100%;
+}
+
+/* КНОПКА ПО ЦЕНТРУ */
+#after-video-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    background: #28a745;
+    padding: 15px 30px;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+
+    z-index: 10;
+}
